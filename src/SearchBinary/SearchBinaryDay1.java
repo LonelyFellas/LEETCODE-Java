@@ -9,6 +9,7 @@ public class SearchBinaryDay1 {
 
     /**
      * Leetcode No.349 两个数组的交集
+     *
      * @param nums1 数组1
      * @param nums2 数组2
      * @return int[]类型的交集数
@@ -18,7 +19,7 @@ public class SearchBinaryDay1 {
 
         for (int num : nums1) {
             if (search(nums2, num, true) != -1) {
-               set.add(num);
+                set.add(num);
             }
         }
 
@@ -27,6 +28,7 @@ public class SearchBinaryDay1 {
 
     /**
      * Leetcode No.1213 三个有序数组的交集
+     *
      * @param arr1 数组1
      * @param arr2 数组2
      * @param arr3 数组3
@@ -36,7 +38,7 @@ public class SearchBinaryDay1 {
         List<Integer> list = new ArrayList<Integer>();
         for (int number : arr1) {
             if (search(arr2, number, false) != -1 && search(arr3, number, false) != -1) {
-               list.add(number);
+                list.add(number);
             }
         }
         return list;
@@ -44,7 +46,8 @@ public class SearchBinaryDay1 {
 
     /**
      * Leetcode No.704 位置查找
-     * @param nums 给定的数组
+     *
+     * @param nums   给定的数组
      * @param target 搜索的目标
      * @param isSort 是否要对数组进行排序
      * @return 返回目标第一个下标
@@ -53,27 +56,27 @@ public class SearchBinaryDay1 {
         if (isSort) {
             Arrays.sort(nums);
         }
-       int left = 0;
-       int right = nums.length - 1;
+        int left = 0;
+        int right = nums.length - 1;
 
-       while (left <= right) {
-           int mid = (left + right) / 2;
-           if (nums[mid] == target) {
-               return mid;
-           } else if (nums[mid] < target) {
-               left = mid + 1;
-           } else {
-               right = mid - 1;
-           }
-       }
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
 
-       return -1;
+        return -1;
     }
 
     /**
      * Leetcode No.2089 找出数据排序后的目标下标
      *
-     * @param nums 给定的数组
+     * @param nums   给定的数组
      * @param target 搜索目标
      * @return 返回数组中所有等于目标值的下标
      */
