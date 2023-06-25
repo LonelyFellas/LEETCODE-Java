@@ -1,8 +1,6 @@
 package SearchBinary;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
+import java.util.*;
 
 public class SearchBinaryDay1 {
     public SearchBinaryDay1() {
@@ -10,12 +8,51 @@ public class SearchBinaryDay1 {
     }
 
     /**
+     * Leetcode No.349 两个数组的交集
+     * @param nums1 数组1
+     * @param nums2 数组2
+     * @return int[]类型的交集数
+     */
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> set = new HashSet<>();
+
+        for (int num : nums1) {
+            if (search(nums2, num, true) != -1) {
+               set.add(num);
+            }
+        }
+
+        return set.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    /**
+     * Leetcode No.1213 三个有序数组的交集
+     * @param arr1 数组1
+     * @param arr2 数组2
+     * @param arr3 数组3
+     * @return 结果三个数组的交集 -> list
+     */
+    public List<Integer> arraysIntersection(int[] arr1, int[] arr2, int[] arr3) {
+        List<Integer> list = new ArrayList<Integer>();
+        for (int number : arr1) {
+            if (search(arr2, number, false) != -1 && search(arr3, number, false) != -1) {
+               list.add(number);
+            }
+        }
+        return list;
+    }
+
+    /**
      * Leetcode No.704 位置查找
      * @param nums 给定的数组
      * @param target 搜索的目标
+     * @param isSort 是否要对数组进行排序
      * @return 返回目标第一个下标
      */
-    public int search(int[] nums, int target) {
+    public int search(int[] nums, int target, boolean isSort) {
+        if (isSort) {
+            Arrays.sort(nums);
+        }
        int left = 0;
        int right = nums.length - 1;
 
