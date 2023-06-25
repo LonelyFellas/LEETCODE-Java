@@ -10,6 +10,23 @@ public class SearchBinaryDay1 {
     }
 
     /**
+     * Leetcode No.1213 三个有序数组的交集
+     * @param arr1 数组1
+     * @param arr2 数组2
+     * @param arr3 数组3
+     * @return 结果三个数组的交集 -> list
+     */
+    public List<Integer> arraysIntersection(int[] arr1, int[] arr2, int[] arr3) {
+        List<Integer> list = new ArrayList<Integer>();
+        for (int number : arr1) {
+            if (search(arr2, number) != -1 && search(arr3, number) != -1) {
+               list.add(number);
+            }
+        }
+        return list;
+    }
+
+    /**
      * Leetcode No.704 位置查找
      * @param nums 给定的数组
      * @param target 搜索的目标
