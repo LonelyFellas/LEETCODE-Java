@@ -1,12 +1,54 @@
 package SearchBinary;
 
+import java.util.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Day2 {
     public Day2() {
 
+    }
+
+    /**
+     * Leetcode NO.1337 矩阵中战斗力最弱的 K 行
+     * @param mat 矩阵数据
+     * @param k 需要从弱到强的数列的个数
+     * @return 返回相应个数的数组
+     */
+    public int[] kWeakestRows(int[][] mat, int k) {
+        int len = mat.length;
+        List<int[]> list = new ArrayList<>();
+        int[] result = new int[k];
+        for (int n = 0; n < len; n++) {
+            int i = 0;
+            int j = mat[n].length - 1;
+            while(i <= j && mat[n][0] != 0) {
+                int mid =  (i + j) / 2;
+                if (mat[n][mid] == 1 && mid == mat[n].length - 1 || mat[n][mid] == 1 && mat[n][mid + 1] == 0) {
+                    i = mid;
+                    break;
+                } else if (mat[n][mid] == 1) {
+                    i = mid + 1;
+                } else if (mat[n][mid] == 0) {
+                    j = mid - 1;
+                }
+            }
+            list.add(new int[] {n, mat[n][0] == 0 ? 0 : i + 1});
+        }
+        list = sortedListByIndex(list);
+        for (int i = 0; i < k; i++) {
+            result[i] = list.get(i)[0];
+        }
+
+        return result;
+    }
+    public List<int[]> sortedListByIndex(List<int[]> list) {
+        Collections.sort(list, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[1] - o2[1];
+            }
+        });
+        return list;
     }
 
     /**
