@@ -17,9 +17,9 @@ public class Main {
 //        int[][] data = {{1,0}, {0,0}, {1,0}};
 //        int[] result = day2.kWeakestRows(data, 2);
         Bubble bubble = new Bubble();
-        int[] result = bubble.sortBetter(new int[] {3, 5, 4, 9, 2, 7, 1, 6, 8});
-
-        displayIntArray(result);
+//        int[] result = bubble.sortBetter(new int[] {3, 5, 4, 9, 2, 7, 1, 6, 8});
+        bubble.moveZeros(new int[] {4,2,4,0,0,3,0,5,1,0});
+//        displayIntArray(result);
     }
 
     public static void displayIntArray(int[] array) {
